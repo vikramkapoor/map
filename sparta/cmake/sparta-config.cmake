@@ -36,10 +36,9 @@ if (APPLE)
   set (CMAKE_CXX_COMPILER_VERSION 10.0)
   find_package (Boost 1.49.0 REQUIRED HINTS /usr/local/Cellar/boost/* COMPONENTS ${_BOOST_COMPONENTS})
 else ()
-
   find_package (Boost 1.49.0 REQUIRED COMPONENTS ${_BOOST_COMPONENTS})
-
 endif ()
+
 set (BUILD_SHARED_LIBS ${existing_build_shared})
 message ("-- Using BOOST ${Boost_VERSION_STRING}")
 

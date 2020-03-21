@@ -190,3 +190,26 @@ add_subdirectory (example EXCLUDE_FROM_ALL)
 #
 install(DIRECTORY sparta/ DESTINATION include/sparta)
 install(FILES ${SPARTA_STATIC_LIBS} DESTINATION lib)
+
+include(CMakePackageConfigHelpers)
+
+export(EXPORT SpartaTargets
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/sparta/spartaTargets.cmake"
+  NAMESPACE Sparta::
+)
+configure_file(cmake/sparta-config.cmake
+  "${CMAKE_CURRENT_BINARY_DIR}/spartaConfig.cmake"
+  COPYONLY
+)
+
+set(ConfigPackageLocation lib/cmake/sparta)
+install(EXPORT SpartaTargets
+  FILE spartaTargets.cmake
+  NAMESPACE Sparta::
+  DESTINATION ${ConfigPackageLocation}
+)
+install(
+  FILES cmake/sparta-config.cmake
+  DESTINATION ${ConfigPackageLocation}
+  COMPONENT Devel
+)
