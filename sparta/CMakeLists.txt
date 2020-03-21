@@ -3,7 +3,9 @@ cmake_minimum_required (VERSION 3.14)
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project (sparta CXX)
+project (sparta LANGUAGES CXX
+  DESCRIPTION "Performance/Fuctional C++ Modeling Framework"
+  HOMEPAGE_URL "https://github.com/sparcians/map/tree/master/sparta")
 
 set (SPARTA_BASE ${CMAKE_CURRENT_SOURCE_DIR})
 include (${SPARTA_BASE}/cmake/sparta-config.cmake)
@@ -117,12 +119,14 @@ endif ()
 # SPARTA cmake will _always_ have debug symbols regardless of the
 # build type.
 #
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+set (LTO_OPTION "")
+if (CMAKE_BUILD_TYPE MATCHES "^[Dd]ebug")
   message ("-- Building Sparta in Debug mode")
-elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
+elseif (CMAKE_BUILD_TYPE MATCHES "^[Rr]elease")
   message ("-- Building Sparta in Release mode")
+  set (LTO_OPTION "-flto")
 else ()
-  message (FATAL_ERROR "Unknown CMAKE_BUILD_TYPE.  See README.md OR type 'make' at the SPARTA root")
+  message (FATAL_ERROR "Unknown CMAKE_BUILD_TYPE '${CMAKE_BUILD_TYPE}'.  See README.md OR type 'make' at the SPARTA root")
 endif ()
 
 string (STRIP ${GIT_REPO_VERSION} GIT_REPO_VERSION)
@@ -151,7 +155,7 @@ endif ()
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   # using Clang
   # -stdlib=libc++
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wpedantic -Wno-gnu-zero-variadic-macro-arguments ")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wpedantic -Wno-gnu-zero-variadic-macro-arguments -pipe ${LTO_OPTION}")
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   # using GCC
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
@@ -186,4 +190,3 @@ add_subdirectory (example EXCLUDE_FROM_ALL)
 #
 install(DIRECTORY sparta/ DESTINATION include/sparta)
 install(FILES ${SPARTA_STATIC_LIBS} DESTINATION lib)
-
