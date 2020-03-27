@@ -334,6 +334,7 @@ public:
         std::for_each(physical_stage_set_.begin(), physical_stage_set_.end(), [this](const auto stage){
             pipe_[stage].~PipeEntry();
         });
+        physical_stage_set_.clear();
         num_valid_ = 0;
     }
 
@@ -347,7 +348,7 @@ public:
     void flushPS (uint32_t stage)
     {
         sparta_assert(stage != uint32_t(-1), "Do not refer to stage -1 directly, use flushAppend()");
-        if(physical_stage_set_.find(getPhysicalStage_(stage)) != physical_stage_set_.end()){
+        if(isValid(stage)){
             pipe_[getPhysicalStage_(stage)].~PipeEntry();
             physical_stage_set_.erase(getPhysicalStage_(stage));
             --num_valid_;
@@ -551,6 +552,7 @@ private:
             --num_valid_;
         }
         new (pipe_.get() + getPhysicalStage_(stage)) PipeEntry(std::forward<U>(data));
+        physical_stage_set_.insert(getPhysicalStage_(stage));
         ++num_valid_;
         if(perform_own_updates_) {
             ev_update_.schedule();
