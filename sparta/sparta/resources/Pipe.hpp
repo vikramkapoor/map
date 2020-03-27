@@ -48,6 +48,9 @@ private:
 
     struct PipeEntry
     {
+        template<typename U>
+        explicit PipeEntry(U&& data) : data(std::forward<U>(data)){}
+
         sparta::utils::ValidValue<DataT> data;
     };
 
@@ -64,7 +67,7 @@ private:
         num_entries_ = num_entries;
         physical_size_ = sparta::utils::pow2 (sparta::utils::ceil_log2 (num_entries + 1));
         stage_mask_ = physical_size_ - 1;
-        pipe_.reset(new PipeEntry[physical_size_]);
+        pipe_.reset(static_cast<PipeEntry *>(malloc(sizeof(PipeEntry) * physical_size_)));
     }
 
 public:
@@ -101,7 +104,7 @@ public:
          * \brief construct.
          * \param pipe  a pointer to the underlaying pipe.
          */
-        PipeIterator(PipePointerType pipe) : pipe_(pipe) {}
+        explicit PipeIterator(PipePointerType pipe) : pipe_(pipe) {}
 
         /**
          * \brief construct.
@@ -202,14 +205,18 @@ public:
     Pipe (const std::string & name,
           uint32_t num_entries,
           const Clock * clk) :
-        name_(name),
-        ev_update_(&es_, name+"_pipe_update_event",
-                   CREATE_SPARTA_HANDLER(Pipe, internalUpdate_), 1)
+          name_(name),
+          ev_update_(&es_, name+"_pipe_update_event",
+                     CREATE_SPARTA_HANDLER(Pipe, internalUpdate_), 1)
     {
         initPipe_(num_entries);
         ev_update_.setScheduleableClock(clk);
         ev_update_.setScheduler(clk->getScheduler());
         ev_update_.setContinuing(false);
+    }
+
+    ~Pipe(){
+        clear();
     }
 
     /**
@@ -309,14 +316,12 @@ public:
     //! if there is no data at the given stage
     void invalidatePS (uint32_t stage)
     {
-        PipeEntry & pe = pipe_[getPhysicalStage_(stage)];
-        sparta_assert(pe.data.isValid(), "ERROR: In sparta::Pipe '" << name_
-                    << "' invalidatePS at stage " << stage << " is not valid");
         sparta_assert(stage != uint32_t(-1), "Do not refer to stage -1 directly, use flushAppend()");
-        if(pe.data.isValid()) {
-            --num_valid_;
-        }
-        pe.data.clearValid();
+        sparta_assert(isValid(stage), "ERROR: In sparta::Pipe '" << name_
+                      << "' invalidatePS at stage " << stage << " is not valid");
+        pipe_[getPhysicalStage_(stage)].~PipeEntry();
+        physical_stage_set_.erase(getPhysicalStage_(stage));
+        --num_valid_;
         if(perform_own_updates_) {
             ev_update_.schedule();
         }
@@ -326,7 +331,9 @@ public:
      * \brief Clear the pipe
      */
     void clear() {
-        pipe_.reset (new PipeEntry[physical_size_]);
+        std::for_each(physical_stage_set_.begin(), physical_stage_set_.end(), [this](const auto stage){
+            pipe_[stage].~PipeEntry();
+        });
         num_valid_ = 0;
     }
 
@@ -339,29 +346,25 @@ public:
     //! Flush the item at the given stage, even if not valid
     void flushPS (uint32_t stage)
     {
-        PipeEntry & pe = pipe_[getPhysicalStage_(stage)];
         sparta_assert(stage != uint32_t(-1), "Do not refer to stage -1 directly, use flushAppend()");
-        if(pe.data.isValid()) {
+        if(physical_stage_set_.find(getPhysicalStage_(stage)) != physical_stage_set_.end()){
+            pipe_[getPhysicalStage_(stage)].~PipeEntry();
+            physical_stage_set_.erase(getPhysicalStage_(stage));
             --num_valid_;
         }
-        pe.data.clearValid();
     }
 
     //! Flush the item that was appended
     void flushAppend()
     {
-        PipeEntry & pe = pipe_[getPhysicalStage_(-1)];
-        pe.data.clearValid();
+        pipe_[getPhysicalStage_(-1)].~PipeEntry();
+        physical_stage_set_.erase(getPhysicalStage_(-1));
     }
 
     //! Flush everything, RIGHT NOW
     void flushAll ()
     {
-        for (int32_t i = -1; i < static_cast<int32_t>(num_entries_); ++i) {
-            PipeEntry & pe = pipe_[getPhysicalStage_(i)];
-            pe.data.clearValid();
-        }
-        num_valid_ = 0;
+        clear();
     }
 
     /**
@@ -373,15 +376,12 @@ public:
     * item is flushed, even if not valid.
     */
     void flushIf(const DataT& criteria){
-        for(int32_t i = -1; i < static_cast<int32_t>(num_entries_); ++i){
-            PipeEntry & pe = pipe_[getPhysicalStage_(i)];
-            if(pe.data.isValid()) {
-                if(pe.data.getValue() == criteria){
-                    if(pe.data.isValid()) {
-                        --num_valid_;
-                    }
-                    pe.data.clearValid();
-                }
+        for(auto it = physical_stage_set_.begin(); it != physical_stage_set_.end(); ++it){
+            PipeEntry & pe = pipe_[*it];
+            if(pe.data.getValue() == criteria){
+                pe.~PipeEntry();
+                it = physical_stage_set_.erase(it);
+                --num_valid_;
             }
         }
     }
@@ -396,15 +396,12 @@ public:
     * example.
     */
     void flushIf(std::function<bool(const DataT&)> compare){
-        for(int32_t i = -1; i < static_cast<int32_t>(num_entries_); ++i){
-            PipeEntry & pe = pipe_[getPhysicalStage_(i)];
-            if(pe.data.isValid()) {
-                if(compare(pe.data.getValue())){
-                    if(pe.data.isValid()) {
-                        --num_valid_;
-                    }
-                    pe.data.clearValid();
-                }
+        for(auto it = physical_stage_set_.begin(); it != physical_stage_set_.end(); ++it){
+            PipeEntry & pe = pipe_[*it];
+            if(compare(pe.data.getValue())){
+                pe.~PipeEntry();
+                it = physical_stage_set_.erase(it);
+                --num_valid_;
             }
         }
     }
@@ -412,8 +409,7 @@ public:
     //! See if there is something at the given stage
     bool isValid (uint32_t stage) const
     {
-        const PipeEntry & pe = pipe_[getPhysicalStage_(stage)];
-        return pe.data.isValid();
+        return physical_stage_set_.find(getPhysicalStage_(stage)) != physical_stage_set_.end();
     }
 
     //! Are any entries valid, including ones appended THIS cycle
@@ -425,25 +421,24 @@ public:
     //! Is the last entry valid?
     bool isLastValid () const
     {
-        const PipeEntry & pe = pipe_[getPhysicalStage_(num_entries_ - 1)];
-        return pe.data.isValid();
+        return physical_stage_set_.find(getPhysicalStage_(num_entries_ - 1)) != physical_stage_set_.end();
     }
 
     //! Read the entry at the given stage
     const DataT & read (uint32_t stage) const
     {
+        sparta_assert(isValid(stage), "ERROR: In sparta::Pipe '" << name_
+                      << "' read at stage " << stage << " is not valid");
         const PipeEntry & pe = pipe_[getPhysicalStage_(stage)];
-        sparta_assert(pe.data.isValid(), "ERROR: In sparta::Pipe '" << name_
-                    << "' read at stage " << stage << " is not valid");
         return pe.data.getValue();
     }
 
     //! Read the entry at the given stage (non-const)
     DataT & access(uint32_t stage)
     {
+        sparta_assert(isValid(stage), "ERROR: In sparta::Pipe '" << name_
+                      << "' read at stage " << stage << " is not valid");
         PipeEntry & pe = pipe_[getPhysicalStage_(stage)];
-        sparta_assert(pe.data.isValid(), "ERROR: In sparta::Pipe '" << name_
-                    << "' read at stage " << stage << " is not valid");
         return pe.data.getValue();
     }
 
@@ -456,7 +451,7 @@ public:
     //! Update the pipe -- shift data appended/invalidated
     void update () {
         sparta_assert(perform_own_updates_ == false,
-                    "HEY! You said you wanted the pipe to do it's own updates.  Liar.");
+                      "HEY! You said you wanted the pipe to do it's own updates.  Liar.");
         internalUpdate_();
     }
 
@@ -464,16 +459,13 @@ public:
     //!\return true if data moved
     bool shiftAppend()
     {
+        if(!isValid(-1) || isValid(0)){
+            return false;
+        }
         PipeEntry & pe_neg1 = pipe_[getPhysicalStage_(-1)];
-        if(!pe_neg1.data.isValid()) {
-            return false; // nothing to move
-        }
-        const PipeEntry & pe_zero = pipe_[getPhysicalStage_(0)];
-        if(pe_zero.data.isValid()) {
-            return false;// can't move
-        }
         writePS(0, pe_neg1.data.getValue());
-        pe_neg1.data.clearValid();
+        pe_neg1.~PipeEntry();
+        physical_stage_set_.erase(getPhysicalStage_(-1));
         return true;
     }
 
@@ -493,6 +485,11 @@ public:
     }
 
 private:
+    struct DeleteToFree_{
+        void operator()(void * x){
+            free(x);
+        }
+    };
 
     size_type num_entries_   = 0; //!< The number of entries in the pipe
     size_type physical_size_ = 0; //!< The physical size of the pipe
@@ -500,7 +497,7 @@ private:
     size_type num_valid_     = 0; //!< Number of valid entries
     size_type tail_          = 0; //!< The tail of the pipe
 
-    std::unique_ptr<PipeEntry[]> pipe_;
+    std::unique_ptr<PipeEntry[], DeleteToFree_> pipe_ = nullptr;
 
     const std::string name_;
 
@@ -514,20 +511,20 @@ private:
 
     void internalUpdate_() {
         // Remove the head object
-        PipeEntry & pe_head = pipe_[getPhysicalStage_(num_entries_ - 1)];
-        if(pe_head.data.isValid()) {
+        if(isValid(num_entries_ - 1)){
+            PipeEntry & pe_head = pipe_[getPhysicalStage_(num_entries_ - 1)];
+            pe_head.~PipeEntry();
+            physical_stage_set_.erase(getPhysicalStage_(num_entries_ - 1));
             --num_valid_;
         }
-        pe_head.data.clearValid();
-
-        // Shift the pipe
-        tail_ = getPhysicalStage_(-1);
 
         // Add the tail object
-        const PipeEntry & pe_tail = pipe_[tail_];
-        if(pe_tail.data.isValid()) {
+        if(isValid(-1)){
+            // Shift the pipe
+            tail_ = getPhysicalStage_(-1);
             ++num_valid_;
         }
+
         if((num_valid_ > 0) && perform_own_updates_) {
             ev_update_.schedule();
         }
@@ -536,10 +533,10 @@ private:
     template<typename U>
     void appendImpl_ (U && data)
     {
-        PipeEntry & pe = pipe_[getPhysicalStage_(-1)];
-        sparta_assert(pe.data.isValid() == false, "ERROR: sparta::Pipe '" << name_
-                    << "' Double append of data before update");
-        pe.data = std::forward<U>(data);
+        sparta_assert(isValid(-1) == false, "ERROR: sparta::Pipe '" << name_
+                      << "' Double append of data before update");
+        new (pipe_.get() + getPhysicalStage_(-1)) PipeEntry(std::forward<U>(data));
+        physical_stage_set_.insert(getPhysicalStage_(-1));
         if(perform_own_updates_) {
             ev_update_.schedule();
         }
@@ -548,11 +545,12 @@ private:
     template<typename U>
     void writePSImpl_ (uint32_t stage, U && data)
     {
-        PipeEntry & pe = pipe_[getPhysicalStage_(stage)];
-        if(pe.data.isValid()) {
+        if(isValid(stage)){
+            pipe_[getPhysicalStage_(stage)].~PipeEntry();
+            physical_stage_set_.erase(getPhysicalStage_(stage));
             --num_valid_;
         }
-        pe.data = std::forward<U>(data);
+        new (pipe_.get() + getPhysicalStage_(stage)) PipeEntry(std::forward<U>(data));
         ++num_valid_;
         if(perform_own_updates_) {
             ev_update_.schedule();
@@ -562,6 +560,8 @@ private:
     //////////////////////////////////////////////////////////////////////
     // Collectors
     std::unique_ptr<collection::CollectableTreeNode> collector_;
+
+    std::unordered_set<uint32_t> physical_stage_set_;
 
 };
 
