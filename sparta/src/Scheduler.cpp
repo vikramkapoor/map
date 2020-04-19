@@ -496,8 +496,8 @@ void Scheduler::run(Tick num_ticks,
             }
         }
 
-        const uint32_t grp_cnt = firing_group_count_;
-        while(current_group_firing_ < grp_cnt)
+        uint32_t last_group_idx = quantum->last_group_idx;
+        while(current_group_firing_ <= last_group_idx + 1)
         {
             TickQuantum::Scheduleables & events = quantum->groups[current_group_firing_];
 
@@ -528,6 +528,7 @@ void Scheduler::run(Tick num_ticks,
                 }
                 sched->getHandler()();
                 ++events_fired_;
+                last_group_idx = quantum->last_group_idx;
             }
             events.clear();
             ++current_group_firing_;
@@ -660,7 +661,8 @@ void Scheduler::cancelEvent(const Scheduleable * scheduleable)
     while(rit != nullptr)
     {
         TickQuantum::Scheduleables & scheduleables = rit->groups[dag_group];
-        for(uint32_t i = 0; i < scheduleables.size(); ++i)
+        const auto scheduleable_size = scheduleables.size();
+        for(uint32_t i = 0; i < scheduleable_size; ++i)
         {
             if(scheduleables[i] == scheduleable) {
                 scheduleables[i] = cancelled_event_.get();
@@ -693,7 +695,8 @@ void Scheduler::cancelEvent(const Scheduleable * scheduleable, Tick rel_time)
         if(rit->tick == index_time)
         {
             TickQuantum::Scheduleables & scheduleables = rit->groups[dag_group];
-            for(uint32_t i = 0; i < scheduleables.size(); ++i)
+            const auto scheduleable_size = scheduleables.size();
+            for(uint32_t i = 0; i < scheduleable_size; ++i)
             {
                 if(scheduleables[i] == scheduleable) {
                     scheduleables[i]->eventCancelled_();

@@ -231,11 +231,13 @@ private:
             sparta_assert(firing_group < groups.size());
             groups[firing_group].emplace_back(scheduleable);
             first_group_idx = std::min(first_group_idx, firing_group);
+            last_group_idx  = std::max(last_group_idx, firing_group);
         }
 
         Tick tick;     //!< The tick this quantum represents
         Groups groups; //!< The list of firing groups. This is indexed by dag_group+1
         uint32_t first_group_idx = std::numeric_limits<uint32_t>::max(); //!< The first group idx with events
+        uint32_t last_group_idx  = 0; //!< The last group idx with events
         TickQuantum * next = nullptr;
     };
 
@@ -262,7 +264,7 @@ private:
 public:
 
     //! Const expression to calculate tick value for indexing
-    Tick calcIndexTime(const Tick rel_time) const {
+    constexpr Tick calcIndexTime(const Tick rel_time) const {
         return current_tick_ + rel_time;
     }
 
@@ -1156,4 +1158,3 @@ inline void Scheduler::printNextCycleEventTree(StreamType& os,
 
 
 }
-
