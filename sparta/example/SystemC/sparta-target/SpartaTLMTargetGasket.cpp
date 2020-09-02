@@ -8,6 +8,10 @@ namespace sparta_target
                                                                tlm::tlm_phase           &phase ,
                                                                sc_core::sc_time         &delay_time )
     {
+        tlm::tlm_sync_enum return_status;
+	switch(phase){
+	case tlm::BEGIN_REQ:
+	{
         // Convert the tlm GP to a sparta-based type.  If the modeler
         // chooses to use Sparta components to handle SysC data types,
         // the modeler could just pass the payload through as a
@@ -29,12 +33,20 @@ namespace sparta_target
         // Send to memory with the given delay - NS -> clock cycles.
         // The Clock is on the same freq as the memory block
         out_memory_request_.send(request, getClock()->getCycle(delay_time.value()));
-
+        return_status = tlm::TLM_COMPLETED;           // force synchronization 
+        break;
+	}
+	default:
+	{
+        return_status = tlm::TLM_COMPLETED;
+        break;
+	}
+	}
         // Assume accepted.  In a real system, the gasket could keep
         // track of credits in the downstream component and the
         // initiator of the request.  In that case, the gasket would
         // either queue the requests or deny the forward
-        return tlm::TLM_COMPLETED;
+        return return_status;
     }
 
     void SpartaTLMTargetGasket::forwardMemoryResponse_(const MemoryRequest & req)
