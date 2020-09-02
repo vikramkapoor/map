@@ -34,7 +34,7 @@ namespace sparta_target
         // track of credits in the downstream component and the
         // initiator of the request.  In that case, the gasket would
         // either queue the requests or deny the forward
-        return tlm::TLM_ACCEPTED;
+        return tlm::TLM_COMPLETED;
     }
 
     void SpartaTLMTargetGasket::forwardMemoryResponse_(const MemoryRequest & req)
