@@ -1,0 +1,5 @@
+<map id="sparta::operator&gt;&gt;" name="sparta::operator&gt;&gt;">
+<area shape="rect" id="node1" title="Place a precedence between a GlobalOrderingPoint and an InPort." alt="" coords="5,42,132,69"/>
+<area shape="rect" id="node2" href="$classsparta_1_1GlobalOrderingPoint.html#ad939905beba086801cfdfa34d3f56046" title="Used by the precedence rules." alt="" coords="194,5,374,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1InPort.html#a2af10c4f030280e46edcc65606ecffb4" title="Return the internally used Scheduleable for precedence." alt="" coords="180,71,388,98"/>
+</map>

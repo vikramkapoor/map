@@ -1,0 +1,24 @@
+<map id="sparta::ParameterSet" name="sparta::ParameterSet">
+<area shape="rect" id="node1" title="Generic container of Parameters." alt="" coords="592,521,736,548"/>
+<area shape="rect" id="node6" href="$classConsumer_1_1ConsumerParameterSet.html" title=" " alt="" coords="784,5,1011,32"/>
+<area shape="rect" id="node7" href="$classcore__example_1_1BIU_1_1BIUParameterSet.html" title="Parameters for BIU model." alt="" coords="829,57,966,98"/>
+<area shape="rect" id="node8" href="$classcore__example_1_1Core_1_1CoreParameterSet.html" title="Parameters for Core model." alt="" coords="830,122,965,163"/>
+<area shape="rect" id="node9" href="$classcore__example_1_1CPU_1_1CPUParameterSet.html" title="Parameters for CPU model." alt="" coords="826,187,969,229"/>
+<area shape="rect" id="node10" href="$classcore__example_1_1Decode_1_1DecodeParameterSet.html" title="Parameters for Decode model." alt="" coords="821,253,973,294"/>
+<area shape="rect" id="node11" href="$classcore__example_1_1Dispatch_1_1DispatchParameterSet.html" title="Parameters for Dispatch model." alt="" coords="818,318,977,359"/>
+<area shape="rect" id="node12" href="$classcore__example_1_1Execute_1_1ExecuteParameterSet.html" title="Parameters for Execute model." alt="" coords="820,383,975,425"/>
+<area shape="rect" id="node13" href="$classcore__example_1_1Fetch_1_1FetchParameterSet.html" title="Parameters for Fetch model." alt="" coords="827,449,968,490"/>
+<area shape="rect" id="node14" href="$classcore__example_1_1FlushManager_1_1FlushManagerParameters.html" title=" " alt="" coords="802,514,993,555"/>
+<area shape="rect" id="node15" href="$classcore__example_1_1LSU_1_1LSUParameterSet.html" title="Parameters for LSU model." alt="" coords="827,579,968,621"/>
+<area shape="rect" id="node16" href="$classcore__example_1_1MSS_1_1MSSParameterSet.html" title="Parameters for MSS model." alt="" coords="826,645,969,686"/>
+<area shape="rect" id="node17" href="$classcore__example_1_1Preloader_1_1PreloaderParameterSet.html" title=" " alt="" coords="816,710,979,751"/>
+<area shape="rect" id="node18" href="$classcore__example_1_1Rename_1_1RenameParameterSet.html" title="Parameters for Rename model." alt="" coords="819,775,975,817"/>
+<area shape="rect" id="node19" href="$classcore__example_1_1ROB_1_1ROBParameterSet.html" title="Parameters for ROB model." alt="" coords="826,841,969,882"/>
+<area shape="rect" id="node20" href="$classcore__example_1_1SimpleTLB_1_1TLBParameterSet.html" title=" " alt="" coords="811,906,984,947"/>
+<area shape="rect" id="node21" href="$classProducerParameterSet.html" title=" " alt="" coords="820,972,975,999"/>
+<area shape="rect" id="node22" href="$classsparta_1_1IntParameterSet.html" title=" " alt="" coords="818,1023,977,1049"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TreeNode.html" title="Node in a composite tree representing a sparta Tree item." alt="" coords="423,521,544,548"/>
+<area shape="rect" id="node3" href="$classsparta_1_1ResourceContainer.html" title="PhasedObject which can hold 0 or 1 Resource pointers to an associatedresource. Contains logic for set..." alt="" coords="200,496,375,523"/>
+<area shape="rect" id="node4" href="$classsparta_1_1PhasedObject.html" title="Object having a specific phase in the sparta construction paradigm." alt="" coords="5,496,152,523"/>
+<area shape="rect" id="node5" href="$classsparta_1_1ArchDataContainer.html" title="Container class for any number of ArchData pointers owned externally." alt="" coords="201,547,374,573"/>
+</map>

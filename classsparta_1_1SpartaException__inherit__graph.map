@@ -1,0 +1,17 @@
+<map id="sparta::SpartaException" name="sparta::SpartaException">
+<area shape="rect" id="node1" title="Used to construct and throw a standard C++ exception. Inherits from std::exception." alt="" coords="155,239,313,265"/>
+<area shape="rect" id="node3" href="$classsparta_1_1DAG_1_1CycleException.html" title=" " alt="" coords="397,5,583,32"/>
+<area shape="rect" id="node4" href="$classsparta_1_1FutureStatisticRange.html" title="Exception indicating that the range of a StatisticInstance starts or ends in the future (probably cau..." alt="" coords="397,56,583,83"/>
+<area shape="rect" id="node5" href="$classsparta_1_1memory_1_1MemoryAccessError.html" title="Indicates that there was an issue accessing a SPARTA memory object or interface." alt="" coords="387,107,593,149"/>
+<area shape="rect" id="node10" href="$classsparta_1_1memory_1_1MemoryTranslationError.html" title="Indicates that there was an issue translating an address in the SPARTA framework." alt="" coords="377,173,603,214"/>
+<area shape="rect" id="node11" href="$classsparta_1_1ParameterException.html" title="Exception indicating a misconfigured Parameter or invalid Parameter access." alt="" coords="400,239,580,265"/>
+<area shape="rect" id="node12" href="$classsparta_1_1ReversedStatisticRange.html" title="Exception indicating that the range of a StatisticInstance was reversed when it was accessed (probabl..." alt="" coords="407,290,573,331"/>
+<area shape="rect" id="node13" href="$classsparta_1_1SpartaCriticalError.html" title="Indicates something went seriously wrong and likely indicates corruption in simulator runtime state." alt="" coords="405,356,575,383"/>
+<area shape="rect" id="node14" href="$classsparta_1_1SpartaFatalError.html" title="Indicates something went seriously wrong and likely indicates unrecoverable corruption in simulator r..." alt="" coords="411,407,569,433"/>
+<area shape="rect" id="node15" href="$classsparta_1_1utils_1_1Enum_1_1UnknownNameException.html" title=" " alt="" coords="361,458,619,499"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,239,107,265"/>
+<area shape="rect" id="node6" href="$classsparta_1_1memory_1_1MemoryPeekError.html" title="Error while attempting to peek some memory object or interface." alt="" coords="667,10,859,51"/>
+<area shape="rect" id="node7" href="$classsparta_1_1memory_1_1MemoryPokeError.html" title="Error while attempting to poke some memory object or interface." alt="" coords="667,75,859,117"/>
+<area shape="rect" id="node8" href="$classsparta_1_1memory_1_1MemoryReadError.html" title="Error while attempting to read some memory object or interface." alt="" coords="667,141,859,182"/>
+<area shape="rect" id="node9" href="$classsparta_1_1memory_1_1MemoryWriteError.html" title="Error while attempting to write some memory object or interface." alt="" coords="667,206,859,247"/>
+</map>

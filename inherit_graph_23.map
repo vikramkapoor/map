@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,307,87,334"/>
+<area shape="rect" id="node2" href="$structMetaStruct_1_1is__any__pointer.html" title="This templated struct lets us know about whether the datatype is actually an ordinary object or point..." alt="" coords="155,5,301,47"/>
+<area shape="rect" id="node3" href="$structMetaStruct_1_1is__bool.html" title="Templated struct for detecting Boolean Type." alt="" coords="161,71,295,112"/>
+<area shape="rect" id="node4" href="$structMetaStruct_1_1is__char__pointer.html" title="Templated struct for detecting char pointer type." alt="" coords="155,136,301,177"/>
+<area shape="rect" id="node5" href="$structMetaStruct_1_1is__pair.html" title="This templated struct lets us know about whether the datatype is actually an std::pair object...." alt="" coords="163,201,293,243"/>
+<area shape="rect" id="node6" href="$structMetaStruct_1_1is__sparta__enum.html" title="Detect whether template parameter is sparta::utils::Enum type. Case when it is not a sparta::utils::E..." alt="" coords="155,267,301,308"/>
+<area shape="rect" id="node7" href="$structMetaStruct_1_1is__stl__container.html" title="This templated struct takes a type and tells us whether that type is a STL container." alt="" coords="148,332,308,373"/>
+<area shape="rect" id="node8" href="$structMetaStruct_1_1is__string.html" title="Templated struct for detecting String Type." alt="" coords="157,397,299,439"/>
+<area shape="rect" id="node9" href="$classMetaTypeList_1_1is__empty.html" title="Class Template is_empty Generic case." alt="" coords="149,463,307,504"/>
+<area shape="rect" id="node10" href="$structMetaTypeList_1_1is__meta__typelist.html" title="Variadic Class Template which takes a type and matches it if that is a type_list. Generic case result..." alt="" coords="151,528,305,569"/>
+<area shape="rect" id="node11" href="$structsparta_1_1is__sparta__enum.html" title="Detect whether template parameter is sparta::utils::Enum type." alt="" coords="135,594,321,621"/>
+</map>

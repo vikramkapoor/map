@@ -1,0 +1,5 @@
+<map id="sparta::memory::DMI_DEPRECATED" name="sparta::memory::DMI_DEPRECATED">
+<area shape="rect" id="node1" title="Defines a DMI which can be used as a fast memory interface that writes directly to a raw pointer." alt="" coords="41,169,181,211"/>
+<area shape="rect" id="node2" href="$classsparta_1_1memory_1_1BlockingMemoryIF.html" title="Pure&#45;virtual memory interface which represents a simple, immediately accessible (blocking) address&#45;sp..." alt="" coords="27,80,194,121"/>
+<area shape="rect" id="node3" href="$classsparta_1_1memory_1_1DebugMemoryIF.html" title="Memory interface which represents a simple, immediately accessible (blocking) address&#45;space with supp..." alt="" coords="5,5,216,32"/>
+</map>

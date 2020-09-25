@@ -1,0 +1,60 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,2089,80,2115"/>
+<area shape="rect" id="node2" href="$structMetaStruct_1_1is__any__pointer_3_01const_01T_01_5_01_4.html" title=" " alt="" coords="157,5,299,47"/>
+<area shape="rect" id="node3" href="$structMetaStruct_1_1is__any__pointer_3_01const_01T_01_5const_01_4.html" title=" " alt="" coords="141,71,315,112"/>
+<area shape="rect" id="node4" href="$structMetaStruct_1_1is__any__pointer_3_01sparta_1_1SpartaSharedPointer_3_01T_01_4_01_6_01_4.html" title=" " alt="" coords="128,135,328,191"/>
+<area shape="rect" id="node5" href="$structMetaStruct_1_1is__any__pointer_3_01sparta_1_1SpartaSharedPointer_3_01T_01_4_01_4.html" title=" " alt="" coords="128,215,328,271"/>
+<area shape="rect" id="node6" href="$structMetaStruct_1_1is__any__pointer_3_01sparta_1_1SpartaSharedPointer_3_01T_01_4_01const_01_6_01_4.html" title=" " alt="" coords="128,295,328,351"/>
+<area shape="rect" id="node7" href="$structMetaStruct_1_1is__any__pointer_3_01sparta_1_1SpartaSharedPointer_3_01T_01_4_01const_01_4.html" title=" " alt="" coords="128,375,328,431"/>
+<area shape="rect" id="node8" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1shared__ptr_3_01T_01_4_01_6_01_4.html" title=" " alt="" coords="157,455,299,511"/>
+<area shape="rect" id="node9" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html" title=" " alt="" coords="157,535,299,591"/>
+<area shape="rect" id="node10" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1shared__ptr_3_01T_01_4_01const_01_6_01_4.html" title=" " alt="" coords="157,615,299,671"/>
+<area shape="rect" id="node11" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1shared__ptr_3_01T_01_4_01const_01_4.html" title=" " alt="" coords="157,695,299,751"/>
+<area shape="rect" id="node12" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1unique__ptr_3_01T_01_4_01_6_01_4.html" title=" " alt="" coords="157,775,299,831"/>
+<area shape="rect" id="node13" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1unique__ptr_3_01T_01_4_01_4.html" title=" " alt="" coords="157,855,299,911"/>
+<area shape="rect" id="node14" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1unique__ptr_3_01T_01_4_01const_01_6_01_4.html" title=" " alt="" coords="157,935,299,991"/>
+<area shape="rect" id="node15" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1unique__ptr_3_01T_01_4_01const_01_4.html" title=" " alt="" coords="157,1015,299,1071"/>
+<area shape="rect" id="node16" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1weak__ptr_3_01T_01_4_01_6_01_4.html" title=" " alt="" coords="161,1095,295,1151"/>
+<area shape="rect" id="node17" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1weak__ptr_3_01T_01_4_01_4.html" title=" " alt="" coords="161,1175,295,1231"/>
+<area shape="rect" id="node18" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1weak__ptr_3_01T_01_4_01const_01_6_01_4.html" title=" " alt="" coords="161,1255,295,1311"/>
+<area shape="rect" id="node19" href="$structMetaStruct_1_1is__any__pointer_3_01std_1_1weak__ptr_3_01T_01_4_01const_01_4.html" title=" " alt="" coords="161,1335,295,1391"/>
+<area shape="rect" id="node20" href="$structMetaStruct_1_1is__any__pointer_3_01T_01_5_01_4.html" title=" " alt="" coords="163,1415,293,1456"/>
+<area shape="rect" id="node21" href="$structMetaStruct_1_1is__any__pointer_3_01T_01_5const_01_4.html" title=" " alt="" coords="159,1480,297,1521"/>
+<area shape="rect" id="node22" href="$structMetaStruct_1_1is__bool_3_01bool_01_6_01_4.html" title=" " alt="" coords="161,1545,295,1587"/>
+<area shape="rect" id="node23" href="$structMetaStruct_1_1is__bool_3_01bool_01_4.html" title=" " alt="" coords="161,1611,295,1652"/>
+<area shape="rect" id="node24" href="$structMetaStruct_1_1is__bool_3_01bool_01const_01_6_01_4.html" title=" " alt="" coords="161,1676,295,1717"/>
+<area shape="rect" id="node25" href="$structMetaStruct_1_1is__bool_3_01bool_01const_01_4.html" title=" " alt="" coords="161,1741,295,1783"/>
+<area shape="rect" id="node26" href="$structMetaStruct_1_1is__char__pointer_3_01char_01_5_01_4.html" title=" " alt="" coords="161,1807,295,1848"/>
+<area shape="rect" id="node27" href="$structMetaStruct_1_1is__char__pointer_3_01char_01_5const_01_4.html" title=" " alt="" coords="151,1872,305,1913"/>
+<area shape="rect" id="node28" href="$structMetaStruct_1_1is__char__pointer_3_01const_01char_01_5_01_4.html" title=" " alt="" coords="149,1937,307,1979"/>
+<area shape="rect" id="node29" href="$structMetaStruct_1_1is__char__pointer_3_01const_01char_01_5const_01_4.html" title=" " alt="" coords="159,2002,297,2058"/>
+<area shape="rect" id="node30" href="$structMetaStruct_1_1is__pair_3_01std_1_1pair_3_01T_00_01U_01_4_01_6_01_4.html" title=" " alt="" coords="154,2081,302,2123"/>
+<area shape="rect" id="node31" href="$structMetaStruct_1_1is__pair_3_01std_1_1pair_3_01T_00_01U_01_4_01_4.html" title=" " alt="" coords="160,2147,296,2188"/>
+<area shape="rect" id="node32" href="$structMetaStruct_1_1is__pair_3_01std_1_1pair_3_01T_00_01U_01_4_01const_01_6_01_4.html" title=" " alt="" coords="163,2211,293,2267"/>
+<area shape="rect" id="node33" href="$structMetaStruct_1_1is__pair_3_01std_1_1pair_3_01T_00_01U_01_4_01const_01_4.html" title=" " alt="" coords="163,2291,293,2347"/>
+<area shape="rect" id="node34" href="$structMetaStruct_1_1is__sparta__enum_3_01sparta_1_1utils_1_1Enum_3_01T_01_4_01_4.html" title="Detect whether template parameter is sparta::utils::Enum type. Case when it is a sparta::utils::Enum ..." alt="" coords="155,2371,301,2427"/>
+<area shape="rect" id="node35" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1array_3_01T_00_01N_01_4_01_4.html" title=" " alt="" coords="155,2451,301,2507"/>
+<area shape="rect" id="node36" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1deque_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="152,2531,304,2587"/>
+<area shape="rect" id="node37" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1forward__list_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="148,2611,308,2667"/>
+<area shape="rect" id="node38" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1list_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="161,2691,295,2747"/>
+<area shape="rect" id="node39" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1map_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="157,2771,299,2827"/>
+<area shape="rect" id="node40" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1multimap_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="143,2851,313,2907"/>
+<area shape="rect" id="node41" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1multiset_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="147,2931,309,2987"/>
+<area shape="rect" id="node42" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1priority__queue_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="151,3011,305,3067"/>
+<area shape="rect" id="node43" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1queue_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="152,3091,304,3147"/>
+<area shape="rect" id="node44" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1set_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="161,3171,295,3227"/>
+<area shape="rect" id="node45" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1stack_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="153,3251,303,3307"/>
+<area shape="rect" id="node46" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1unordered__map_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="141,3331,315,3387"/>
+<area shape="rect" id="node47" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1unordered__multimap_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="141,3411,315,3467"/>
+<area shape="rect" id="node48" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1unordered__multiset_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="141,3491,315,3547"/>
+<area shape="rect" id="node49" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1unordered__set_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="141,3571,315,3627"/>
+<area shape="rect" id="node50" href="$structMetaStruct_1_1is__stl__container_3_01std_1_1vector_3_01Args_8_8_8_01_4_01_4.html" title=" " alt="" coords="151,3651,305,3707"/>
+<area shape="rect" id="node51" href="$structMetaStruct_1_1is__string_3_01std_1_1string_01_6_01_4.html" title=" " alt="" coords="157,3731,299,3772"/>
+<area shape="rect" id="node52" href="$structMetaStruct_1_1is__string_3_01std_1_1string_01_4.html" title=" " alt="" coords="157,3796,299,3837"/>
+<area shape="rect" id="node53" href="$structMetaStruct_1_1is__string_3_01std_1_1string_01const_01_6_01_4.html" title=" " alt="" coords="155,3861,301,3903"/>
+<area shape="rect" id="node54" href="$structMetaStruct_1_1is__string_3_01std_1_1string_01const_01_4.html" title=" " alt="" coords="157,3927,299,3968"/>
+<area shape="rect" id="node55" href="$structMetaStruct_1_1matches__any_3_01T_01_4.html" title="This templated struct takes a target type and another parameter pack of types and returns a nested bo..." alt="" coords="157,3992,299,4033"/>
+<area shape="rect" id="node56" href="$classMetaTypeList_1_1is__empty_3_01type__list_3_4_01_4.html" title="Class Template is_empty Specialization." alt="" coords="149,4057,307,4099"/>
+<area shape="rect" id="node57" href="$structMetaTypeList_1_1is__meta__typelist_3_01MetaTypeList_1_1type__list_3_01Args_8_8_8_01_4_01_4.html" title="Template Specialization when the type indeed is a type_list." alt="" coords="148,4122,308,4178"/>
+<area shape="rect" id="node58" href="$structsparta_1_1is__sparta__enum_3_01sparta_1_1utils_1_1Enum_3_01T_01_4_01_4.html" title="Detect whether template parameter is sparta::utils::Enum type." alt="" coords="150,4202,306,4258"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="sparta::collection::DelayedCollectable::collectWithDuration" name="sparta::collection::DelayedCollectable::collectWithDuration">
+<area shape="rect" id="node1" title="Explicitly collect a value in the future." alt="" coords="5,41,145,97"/>
+<area shape="rect" id="node2" href="$classsparta_1_1collection_1_1Collectable.html#a63da44af767f3e0c3479989822041cbd" title="Explicitly collect a value for the given duration." alt="" coords="205,5,368,61"/>
+<area shape="rect" id="node3" href="$classsparta_1_1PhasedPayloadEvent.html#a3f7835dce02b716a08b1c88e23733955" title="Prepare a Scheduleable Payload for scheduling either now or later." alt="" coords="193,85,380,126"/>
+</map>

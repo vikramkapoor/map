@@ -1,0 +1,6 @@
+<map id="sparta::Register::stringize" name="sparta::Register::stringize">
+<area shape="rect" id="node1" title="Create a string representation of this node." alt="" coords="5,64,172,91"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TreeNode.html#a1a6d4aac10bfa5345b587d84170441de" title=" " alt="" coords="220,5,415,32"/>
+<area shape="rect" id="node3" href="$classsparta_1_1RegisterBase.html#a001ab5cfc53a070ae37aed9ca8009147" title="Gets the size of this register&#39;s value in bits." alt="" coords="246,57,389,98"/>
+<area shape="rect" id="node4" href="$classsparta_1_1RegisterBase.html#a67c4210770235e7f9ba06a0c547abf58" title="Creates a string representing this register&#39;s value as a sequence of bytes, separated by a spaces,..." alt="" coords="240,122,395,163"/>
+</map>
